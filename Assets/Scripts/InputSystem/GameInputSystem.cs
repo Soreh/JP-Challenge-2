@@ -64,6 +64,7 @@ public class GameInputSystem : MonoBehaviour
     
     private void OnApplicationFocus(bool hasFocus)
     {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         SetCursorState(cursorLocked);
     }
 
