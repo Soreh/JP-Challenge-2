@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 [DefaultExecutionOrder(1000)]
 public abstract class MouseTrigger : MonoBehaviour

@@ -7,7 +7,7 @@ using TMPro;
 
 public enum HUDCursor
 {
-    Default, Look, PickUp
+    Default, Look, PickUp, Fight
 }
 
 public class HUDHandler : MonoBehaviour
@@ -15,13 +15,13 @@ public class HUDHandler : MonoBehaviour
     public Image cursorImg;
     public Camera mainCamera;
     public TextMeshProUGUI infoText;
-    public HUDCursor _testCursor = HUDCursor.Default;
 
     [SerializeField]
     private Sprite[] _cursors;
     private HUDCursor _currentCursor;
     private float _messageTimer;
     public float defautlMessageTimer = 10f;
+    private string _lastMessageLog = "";
     private Ray _ray;
     private RaycastHit _hit;
     [SerializeField] private float _rayMaxDistance = 2f;
@@ -45,7 +45,7 @@ public class HUDHandler : MonoBehaviour
         _messageTimer -= Time.deltaTime;
 
         if (_messageTimer < 0) {
-            infoText.text = "";
+            EmptyLogs();
         }
 
         if (_isRayCasting)
@@ -70,8 +70,17 @@ public class HUDHandler : MonoBehaviour
 
     public void LogText(string txt, float duration = 0f)
     {
-        infoText.text += "<br><b>New message :</b><br>" + txt;
-        _messageTimer = defautlMessageTimer;
+        if (txt != _lastMessageLog) {
+            _lastMessageLog = txt;
+            infoText.text += "<br><b>New message :</b><br>" + txt;
+            _messageTimer = defautlMessageTimer;
+        }
+    }
+
+    private void EmptyLogs()
+    {
+        infoText.text = "";
+        _lastMessageLog = "";
     }
 
     void ManageRayCast()
