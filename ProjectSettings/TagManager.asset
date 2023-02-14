@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - HUD
+  - MouseTrigger
   layers:
   - Default
   - TransparentFX
