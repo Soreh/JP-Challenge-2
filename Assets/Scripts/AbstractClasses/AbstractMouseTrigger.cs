@@ -37,6 +37,7 @@ public abstract class AbstractMouseTrigger : MonoBehaviour
 
     public void HandleHover()
     {
+        Debug.Log("Hovering : " + gameObject.name);
         OnHover();
     }
 }

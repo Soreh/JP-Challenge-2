@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class InfosPoint : AbstractMouseTrigger
 {
+    [TextArea(3,10)]
     public string infosTxt;
     public float duration = 1f;
 
