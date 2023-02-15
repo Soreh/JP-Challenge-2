@@ -3,20 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InfosPoint : MouseTrigger
+public class InfosPoint : AbstractMouseTrigger
 {
     public string infosTxt;
     public float duration = 1f;
 
-    public override void OnClick()
+    public override void OnRightClick()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            LogMessage(infosTxt, duration);
-            GameObject Player = GameObject.FindWithTag("Player");
-            float distanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
-            Debug.Log("I'm at a distance of " + distanceToPlayer + " from Player.");
-        }
+        LogMessage(infosTxt, duration);
+    }
+
+    public override void OnLeftClick()
+    {
+        LogMessage("This had no effect...");
     }
 
     public override void OnHover()

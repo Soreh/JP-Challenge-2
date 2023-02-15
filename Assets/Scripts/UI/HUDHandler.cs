@@ -24,6 +24,7 @@ public class HUDHandler : MonoBehaviour
     private string _lastMessageLog = "";
     private Ray _ray;
     private RaycastHit _hit;
+    private GameObject _lastHit;
     [SerializeField] private float _rayMaxDistance = 2f;
     [SerializeField] private bool _isRayCasting = true;
     // Start is called before the first frame update
@@ -50,7 +51,6 @@ public class HUDHandler : MonoBehaviour
 
         if (_isRayCasting)
         {
-            SwitchCursor(HUDCursor.Default);
             ManageRayCast();
         }
 
@@ -89,9 +89,26 @@ public class HUDHandler : MonoBehaviour
         Debug.DrawRay(_ray.origin, _ray.direction * _rayMaxDistance, Color.magenta);
         if (Physics.Raycast(_ray, out _hit, _rayMaxDistance))
         {
-            if (_hit.transform.gameObject.CompareTag("MouseTrigger")) {
-                _hit.transform.gameObject.GetComponent<MouseTrigger>().ManageClickAndHover();
+            GameObject hitGameObject = _hit.transform.gameObject;
+            AbstractMouseTrigger ms = _hit.transform.gameObject.GetComponent<AbstractMouseTrigger>();
+            if (hitGameObject.CompareTag("MouseTrigger")) {
+                if (_lastHit == null || _lastHit != hitGameObject ) {
+                    _lastHit = hitGameObject;
+                    ms.HandleHover();
+                }
+                if (Mouse.current.leftButton.wasPressedThisFrame) {
+                    ms.HandLeftClick();
+                }
+                if (Mouse.current.rightButton.wasPressedThisFrame) {
+                    ms.HandleRightClick();
+                }
+            } else {
+                _lastHit = hitGameObject;
+                SwitchCursor(HUDCursor.Default);
             }
+        } else {
+            _lastHit = null;
+            SwitchCursor(HUDCursor.Default);
         }
     }
 

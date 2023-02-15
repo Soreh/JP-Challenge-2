@@ -207,7 +207,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1227434837}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9999831
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -460,7 +460,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8974536461533080327, guid: 744b407fde2f2413386452c1e729ccbc, type: 3}
   m_PrefabInstance: {fileID: 3072438416039780094}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &572747698
+--- !u!114 &572747700
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -469,11 +469,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 572747696}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45197a470435343f89981def53a5c52a, type: 3}
+  m_Script: {fileID: 11500000, guid: 53dde0d1ce02f4351b334b3af3c7f8c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infosTxt: A beautyful pillar...
-  duration: 1
 --- !u!1 &607500147
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,11 +803,11 @@ MonoBehaviour:
   cursorImg: {fileID: 1294917264}
   mainCamera: {fileID: 478424737}
   infoText: {fileID: 1382062189}
-  _testCursor: 0
   _cursors:
   - {fileID: 21300000, guid: dbaf39b60f00a4043b67eed813036be4, type: 3}
   - {fileID: 21300000, guid: 60b6d5593384f4c638ea7d50dd5afa26, type: 3}
   - {fileID: 21300000, guid: 2d30970c9a66b43638a1f3d870ae9379, type: 3}
+  - {fileID: 21300000, guid: 04922230d31f445cd9b203194644cd04, type: 3}
   defautlMessageTimer: 5
   _rayMaxDistance: 4
   _isRayCasting: 1
@@ -1554,7 +1552,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0.000030517578}
+  m_AnchoredPosition: {x: 0.000061035156, y: 0.000091552734}
   m_SizeDelta: {x: -0.0001, y: -5.3325}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1382062189

@@ -3,29 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Target : MouseTrigger
+public class Target : AbstractMouseTrigger
 {
-    public override void OnClick()
+    public override void OnLeftClick()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            GameObject Player = GameObject.FindWithTag("Player");
-            float distanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
-            LogMessage("I'm at a distance of " + distanceToPlayer );
-            LogMessage("I should attack !");
-        }
-        if (Mouse.current.rightButton.wasPressedThisFrame)
-        {
-            GameObject Player = GameObject.FindWithTag("Player");
-            float distanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
-            LogMessage("I'm at a distance of " + distanceToPlayer );
-            LogMessage("I should cast a spell !");
-        }
+        LogMessage("I should attack !");
+    }
+
+    public override void OnRightClick()
+    {
+        LogMessage("I should cast a spell !");
     }
 
     public override void OnHover()
     {
+        LogMessage("I'm at a distance of " + GetDistanceToPlayer() );
         hud.SwitchCursor(HUDCursor.Fight);
+    }
+
+    private float GetDistanceToPlayer()
+    {
+        GameObject player =  GameObject.FindWithTag("Player");
+        return Vector3.Distance(transform.position, player.transform.position);
     }
 
 }

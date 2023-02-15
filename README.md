@@ -8,9 +8,9 @@
  - Encapsulation
  - Abstraction
 
- The game is a 1st person shooter where the player has to find his way to evade from a futuristic maze
- - Differents types of enemies derive from an abstract Enemy class (Inheritance)
- - Each type of enemy deals different kind of damage (Polymorphism)
+ The game is a 1st person kinda text adventure simple riddle where the player has to find his way to evade from a locked door
+ - Differents types of clickable objects from an abstract Mouse trigger class (Inheritance)
+ - Each type of clickable objects (Infos Points, Target, and Pickups) react differently on mouse clicks and hover (Polymorphism)
  - The health of the player is a Property using getters and setters to access the actual private health value (Encapsulation)
  - Code is organized in a way that reduces duplicate code through higher level methods (abstraction).
 

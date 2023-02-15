@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [DefaultExecutionOrder(1000)]
-public abstract class MouseTrigger : MonoBehaviour
+public abstract class AbstractMouseTrigger : MonoBehaviour
 {
     protected HUDHandler hud;
-    public abstract void OnClick();
+    public abstract void OnLeftClick();
+    public abstract void OnRightClick();
     public abstract void OnHover();
     private void Start()
     {
@@ -24,9 +25,18 @@ public abstract class MouseTrigger : MonoBehaviour
         hud.LogText(msg);
     }
 
-    public void ManageClickAndHover()
+    public void HandLeftClick()
+    {
+        OnLeftClick();
+    }
+    
+    public void HandleRightClick()
+    {
+        OnRightClick();
+    }
+
+    public void HandleHover()
     {
         OnHover();
-        OnClick();
     }
 }
