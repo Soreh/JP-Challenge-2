@@ -90,7 +90,8 @@ public class LevelManager : MonoBehaviour
 
     public void openDoor()
     {
-        door.gameObject.transform.Translate(0f, 1.5f, 0f);
+        Animator doorAnim = door.gameObject.GetComponentInChildren<Animator>();
+        doorAnim.SetTrigger("Open_tr");
     }
 
     public void Retry()
