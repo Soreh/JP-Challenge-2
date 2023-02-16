@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RiddlePillar : AbstractTarget
 {
     private int lastSpell = 0;
+    public float radiusEffect = 5;
+    public int dmgPoint = 10;
     public Spell[] spellOrder;
+
     public override void ReceiveDamage(int damage, AbstractAttack attack)
     {
         if (attack == spellOrder[lastSpell])
@@ -14,23 +18,30 @@ public class RiddlePillar : AbstractTarget
             lastSpell++;
             if (lastSpell == spellOrder.Length)
             {
-                HUDHandler.Instance.LogText("You open the door !");
-                // TODO
-                // Open the door in world, and manage the end of the game.
+                HUDHandler.Instance.LogText("You hear a loud sound upstairs... The door slowly opens!");
+                LevelManager.Instance.openDoor();
             }
         } else {
-            HUDHandler.Instance.LogText("Oops");
             FightBack();
-            //TO DO 
-            // Reset scrolls prefab !
+            LevelManager.Instance.RespawnScrolls();
             lastSpell = 0;
         }
     }
 
     public void FightBack()
     {
-        //TODO
-        Debug.Log("To implement !");
+        bool inflictDmg= false;
+        string txt = "The pilar vibrates and emits a powerful choc wave! ";
+        if (GetDistanceToPlayer() < radiusEffect)
+        {
+            txt += $"This strikes you in the face, causing { dmgPoint } DMG points!";
+            inflictDmg = true;
+        } else 
+        {
+            txt += "Luckily, you are out of range!";
+        }
+        HUDHandler.Instance.LogText(txt);
+        if(inflictDmg) {player.TakeDamage(dmgPoint);}
     }
 
     public override void OnHover()

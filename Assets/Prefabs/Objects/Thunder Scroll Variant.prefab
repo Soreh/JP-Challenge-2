@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5450284303492958887
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3361462776557415622, guid: 7b79dfa6a5c5c43ecb3863076b972e1c, type: 3}
+      propertyPath: m_Name
+      value: Thunder Scroll Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5498898051096096620, guid: 7b79dfa6a5c5c43ecb3863076b972e1c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a5f1488abb3524c39be081075426529f, type: 2}
+    - target: {fileID: 9110258592816753758, guid: 7b79dfa6a5c5c43ecb3863076b972e1c, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110258592816753758, guid: 7b79dfa6a5c5c43ecb3863076b972e1c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110258592816753758, guid: 7b79dfa6a5c5c43ecb3863076b972e1c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110258592816753758, guid: 7b79dfa6a5c5c43ecb3863076b972e1c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.6999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110258592816753758, guid: 7b79dfa6a5c5c43ecb3863076b972e1c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110258592816753758, guid: 7b79dfa6a5c5c43ecb3863076b972e1c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110258592816753758, guid: 7b79dfa6a5c5c43ecb3863076b972e1c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110258592816753758, guid: 7b79dfa6a5c5c43ecb3863076b972e1c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110258592816753758, guid: 7b79dfa6a5c5c43ecb3863076b972e1c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110258592816753758, guid: 7b79dfa6a5c5c43ecb3863076b972e1c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110258592816753758, guid: 7b79dfa6a5c5c43ecb3863076b972e1c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7b79dfa6a5c5c43ecb3863076b972e1c, type: 3}
+--- !u!1 &7279255329109632609 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3361462776557415622, guid: 7b79dfa6a5c5c43ecb3863076b972e1c, type: 3}
+  m_PrefabInstance: {fileID: 5450284303492958887}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &424568909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7279255329109632609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f155d1a5045b4994ad98c27ca1f0af8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: The scroll you're looking at seems to vibrate and emit discontinuous
+    tiny thunderbolt.
+  detailedDescription: 
+  pickedUpObject: 1
+  infosText: 
+  prefab: {fileID: 7279255329109632609}
+  spell: {fileID: 11400000, guid: e217b76b53645406dbf6180072688754, type: 2}

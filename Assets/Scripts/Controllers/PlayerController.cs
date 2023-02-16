@@ -27,10 +27,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (HealthPoints == 0)
-        {
-            IsDead();
-        }
         
         if(Mouse.current.leftButton.wasPressedThisFrame && canAttack) 
         {
@@ -108,10 +104,21 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         HealthPoints -= damage;
+        if (HealthPoints == 0)
+        {
+            HUDHandler.Instance.LogText("You died... And it was painful!");   
+            StartCoroutine(TimeBeforeGameOverScreen(0.2f));         
+        }
     }
 
     public void IsDead()
     {
-        HUDHandler.Instance.LogText("You passed away... A grue maybe !");
+        LevelManager.Instance.GameOver();
+    }
+
+    IEnumerator TimeBeforeGameOverScreen(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        IsDead();
     }
 }

@@ -15,8 +15,12 @@ public class HUDHandler : MonoBehaviour
     public static HUDHandler Instance {get; private set;}
     public Image cursorImg;
     public Camera mainCamera;
+    public GameObject LogView;
+    public RectTransform ViewPort;
     public TextMeshProUGUI infoText;
     public PlayerController player;
+    public TextMeshProUGUI textPrefab;
+    public Scrollbar scroll;
 
     [SerializeField]
     private Sprite[] _cursors;
@@ -71,6 +75,10 @@ public class HUDHandler : MonoBehaviour
         }
 
     }
+    public void SetRayCasting(bool isRaycasting)
+    {
+        _isRayCasting = isRaycasting;
+    }
 
     public void SwitchCursor(HUDCursor cursor)
     {
@@ -88,15 +96,20 @@ public class HUDHandler : MonoBehaviour
     {
         if (txt != _lastMessageLog) {
             _lastMessageLog = txt;
-            infoText.text += "<br><b>New message :</b><br>" + txt;
-            _messageTimer = defautlMessageTimer;
+            // infoText.text += "<br><b>New message :</b><br>" + txt;
+            // LogView.SetActive(true);
+            // _messageTimer = defautlMessageTimer;
+            TextMeshProUGUI newText = Instantiate(textPrefab, LogView.transform);
+            newText.text += txt;
+            StartCoroutine(DelayScroll());
         }
     }
 
     private void EmptyLogs()
     {
-        infoText.text = "";
-        _lastMessageLog = "";
+        // infoText.text = "";
+        // _lastMessageLog = "";
+        // LogView.SetActive(false);
     }
 
     void ManageRayCast()
@@ -133,5 +146,11 @@ public class HUDHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         LogText("");
+    }
+
+    IEnumerator DelayScroll()
+    {
+        yield return new WaitForSeconds(0.03f);
+        scroll.value = 0;
     }
 }

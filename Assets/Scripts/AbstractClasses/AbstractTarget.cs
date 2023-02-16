@@ -22,10 +22,7 @@ public abstract class AbstractTarget : AbstractMouseTrigger
         HUDHandler.Instance.SwitchCursor(HUDCursor.Fight);
     }
 
-    private float GetDistanceToPlayer()
-    {
-        return Vector3.Distance(transform.position, player.transform.position);
-    }
+    
 
     public virtual void ReceiveDamage(int damage, AbstractAttack attack)
     {

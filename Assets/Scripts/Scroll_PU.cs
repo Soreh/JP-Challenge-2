@@ -15,6 +15,7 @@ public class Scroll_PU : AbstractPickUp
     {
         if (spell != null )
         {
+            LevelManager.Instance.AddScrollToRespawn(this);
             player.EquipWeapon(spell, spell.defaultHand);
             Destroy(gameObject);
             string hand = spell.defaultHand == PlayerHands.Left ? "left" : "right";

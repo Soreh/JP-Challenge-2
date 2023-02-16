@@ -11,7 +11,7 @@ public abstract class AbstractMouseTrigger : MonoBehaviour
     public abstract void OnLeftClick();
     public abstract void OnRightClick();
     public abstract void OnHover();
-    private void Start()
+    protected virtual void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         gameObject.tag = "MouseTrigger";
@@ -48,5 +48,10 @@ public abstract class AbstractMouseTrigger : MonoBehaviour
         if (detailedDescription != "") {
             LogMessage(detailedDescription);
         }
+    }
+
+    protected float GetDistanceToPlayer()
+    {
+        return Vector3.Distance(transform.position, player.transform.position);
     }
 }

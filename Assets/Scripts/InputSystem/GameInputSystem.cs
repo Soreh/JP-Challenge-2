@@ -8,6 +8,7 @@ public class GameInputSystem : MonoBehaviour
     public Vector2 look;
     public bool jump;
     public bool sprint;
+    public bool isPlaying = true;
 
     [Header("Movement Settings")]
     public bool analogMovement;
@@ -24,7 +25,7 @@ public class GameInputSystem : MonoBehaviour
 
     public void OnLook(InputValue value)
     {
-        if(cursorInputForLook)
+        if(cursorInputForLook && isPlaying)
         {
             LookInput(value.Get<Vector2>());
         }
@@ -64,13 +65,36 @@ public class GameInputSystem : MonoBehaviour
     
     private void OnApplicationFocus(bool hasFocus)
     {
-        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-        SetCursorState(cursorLocked);
+        if (isPlaying)
+        {
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            SetCursorState(cursorLocked);
+        }
     }
 
     private void SetCursorState(bool newState)
     {
         Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
+    }
+
+    public void FreeCursor()
+    {
+        Debug.Log("Free the cursor");
+        isPlaying = false;
+        cursorInputForLook = false;
+        cursorLocked = false;
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void LockCursor()
+    {
+        Debug.Log("Lock the cursor");
+        isPlaying = true;
+        cursorInputForLook = true;
+        cursorLocked = true;
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        SetCursorState(cursorLocked);
     }
 }
 	
