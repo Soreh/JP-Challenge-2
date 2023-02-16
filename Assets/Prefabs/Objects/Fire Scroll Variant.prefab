@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire Scroll Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3536937479956614454, guid: 7b79dfa6a5c5c43ecb3863076b972e1c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 643fe934513b44ac8bf9a7e84fea369f, type: 2}
     - target: {fileID: 5498898051096096620, guid: 7b79dfa6a5c5c43ecb3863076b972e1c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -82,6 +86,6 @@ MonoBehaviour:
     it.
   detailedDescription: 
   pickedUpObject: 1
-  infosText: 
+  pickupRadius: 1.5
   prefab: {fileID: 4213067347069640251}
   spell: {fileID: 11400000, guid: 1f4fb258807074f4aa954529f44905e1, type: 2}

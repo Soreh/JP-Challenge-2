@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ice Scroll Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3536937479956614454, guid: 7b79dfa6a5c5c43ecb3863076b972e1c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bdf7423879fd04801964965628bf0899, type: 2}
     - target: {fileID: 5498898051096096620, guid: 7b79dfa6a5c5c43ecb3863076b972e1c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -82,6 +86,6 @@ MonoBehaviour:
     your hand.
   detailedDescription: 
   pickedUpObject: 1
-  infosText: 
+  pickupRadius: 1.5
   prefab: {fileID: 3645364421343474026}
   spell: {fileID: 11400000, guid: 4f8bbd4666ab247d99f21ca771c4e479, type: 2}

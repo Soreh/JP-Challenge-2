@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Thunder Scroll Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3536937479956614454, guid: 7b79dfa6a5c5c43ecb3863076b972e1c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a5f1488abb3524c39be081075426529f, type: 2}
     - target: {fileID: 5498898051096096620, guid: 7b79dfa6a5c5c43ecb3863076b972e1c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -82,6 +86,6 @@ MonoBehaviour:
     tiny thunderbolt.
   detailedDescription: 
   pickedUpObject: 1
-  infosText: 
+  pickupRadius: 1.5
   prefab: {fileID: 7279255329109632609}
   spell: {fileID: 11400000, guid: e217b76b53645406dbf6180072688754, type: 2}
