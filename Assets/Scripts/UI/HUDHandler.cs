@@ -12,9 +12,11 @@ public enum HUDCursor
 
 public class HUDHandler : MonoBehaviour
 {
+    public static HUDHandler Instance {get; private set;}
     public Image cursorImg;
     public Camera mainCamera;
     public TextMeshProUGUI infoText;
+    public PlayerController player;
 
     [SerializeField]
     private Sprite[] _cursors;
@@ -35,14 +37,28 @@ public class HUDHandler : MonoBehaviour
         {
             mainCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
         }
+        if ( player == null )
+        {
+            player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        }
         SwitchCursor(HUDCursor.Default);
         _messageTimer = defautlMessageTimer;
+    }
+
+    private void Awake() {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        } else {
+            Instance = this;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        player.canAttack = true;
         _messageTimer -= Time.deltaTime;
 
         if (_messageTimer < 0) {
@@ -68,7 +84,7 @@ public class HUDHandler : MonoBehaviour
             
     }
 
-    public void LogText(string txt, float duration = 0f)
+    public void LogText(string txt)
     {
         if (txt != _lastMessageLog) {
             _lastMessageLog = txt;
@@ -92,6 +108,7 @@ public class HUDHandler : MonoBehaviour
             GameObject hitGameObject = _hit.transform.gameObject;
             AbstractMouseTrigger ms = _hit.transform.gameObject.GetComponent<AbstractMouseTrigger>();
             if (hitGameObject.CompareTag("MouseTrigger")) {
+                player.canAttack = false;
                 if (_lastHit == null || _lastHit != hitGameObject ) {
                     _lastHit = hitGameObject;
                     ms.HandleHover();

@@ -5,24 +5,21 @@ using UnityEngine;
 [DefaultExecutionOrder(1000)]
 public abstract class AbstractMouseTrigger : MonoBehaviour
 {
-    protected HUDHandler hud;
+    protected PlayerController player;
+    [SerializeField] [TextArea(3,10)] protected string description;
+    [SerializeField] [TextArea(3,10)] protected string detailedDescription;
     public abstract void OnLeftClick();
     public abstract void OnRightClick();
     public abstract void OnHover();
     private void Start()
     {
-        hud = GameObject.FindObjectOfType<HUDHandler>();
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         gameObject.tag = "MouseTrigger";
     }
 
-    public virtual void LogMessage(string msg, float duration)
-    {
-        hud.LogText(msg, duration);
-    }
-    
     public virtual void LogMessage(string msg)
     {
-        hud.LogText(msg);
+        HUDHandler.Instance.LogText(msg);
     }
 
     public void HandLeftClick()
@@ -39,5 +36,17 @@ public abstract class AbstractMouseTrigger : MonoBehaviour
     {
         Debug.Log("Hovering : " + gameObject.name);
         OnHover();
+    }
+
+    protected void LogDescription()
+    {
+        LogMessage(description);
+    }
+
+    protected void LogLongDescription()
+    {
+        if (detailedDescription != "") {
+            LogMessage(detailedDescription);
+        }
     }
 }

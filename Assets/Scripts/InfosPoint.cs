@@ -5,22 +5,19 @@ using UnityEngine.InputSystem;
 
 public class InfosPoint : AbstractMouseTrigger
 {
-    [TextArea(3,10)]
-    public string infosTxt;
-    public float duration = 1f;
+    public override void OnLeftClick()
+    {
+        LogLongDescription();
+    }
 
     public override void OnRightClick()
     {
-        LogMessage(infosTxt, duration);
-    }
-
-    public override void OnLeftClick()
-    {
-        LogMessage("This had no effect...");
+        LogLongDescription();
     }
 
     public override void OnHover()
     {
-        hud.SwitchCursor(HUDCursor.Look);
+        HUDHandler.Instance.SwitchCursor(HUDCursor.Look);
+        LogDescription();
     }
 }

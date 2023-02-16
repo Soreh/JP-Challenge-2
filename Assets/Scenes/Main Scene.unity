@@ -207,7 +207,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1227434837}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99916345
+  m_Size: 0.9999064
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -272,9 +272,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45197a470435343f89981def53a5c52a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infosTxt: As you touch the sealed door, a message appears on its cold surface.<br>It
-    reads :<br>"Thunder stirs up Fire calming Cold".
-  duration: 1
+  description: You're facing a massive stone closed door...
+  detailedDescription: As you touch the sealed door, a message appears on its cold
+    surface.<br>It reads :<br>"Thunder stirs up Fire calming Cold".
 --- !u!1001 &249007767
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -328,7 +328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7221687570706080272, guid: 4d83f3368b95c47cb922b20d052d0633, type: 3}
       propertyPath: m_Name
-      value: Pedestal - Lightning
+      value: Pedestal - Ice
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d83f3368b95c47cb922b20d052d0633, type: 3}
@@ -470,9 +470,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 572747696}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53dde0d1ce02f4351b334b3af3c7f8c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 53be1cf85be9948e1adee92f3625f6cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  description: The high pedestal shows sign of magical impact.
+  detailedDescription: 
+  HP: 0
+  canDie: 0
+  spellOrder:
+  - {fileID: 11400000, guid: 4f8bbd4666ab247d99f21ca771c4e479, type: 2}
+  - {fileID: 11400000, guid: 1f4fb258807074f4aa954529f44905e1, type: 2}
+  - {fileID: 11400000, guid: e217b76b53645406dbf6180072688754, type: 2}
 --- !u!1 &607500147
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,12 +812,13 @@ MonoBehaviour:
   cursorImg: {fileID: 1294917264}
   mainCamera: {fileID: 478424737}
   infoText: {fileID: 1382062189}
+  player: {fileID: 0}
   _cursors:
   - {fileID: 21300000, guid: dbaf39b60f00a4043b67eed813036be4, type: 3}
   - {fileID: 21300000, guid: 60b6d5593384f4c638ea7d50dd5afa26, type: 3}
   - {fileID: 21300000, guid: 2d30970c9a66b43638a1f3d870ae9379, type: 3}
   - {fileID: 21300000, guid: 04922230d31f445cd9b203194644cd04, type: 3}
-  defautlMessageTimer: 5
+  defautlMessageTimer: 20
   _rayMaxDistance: 4
   _isRayCasting: 1
 --- !u!1001 &817636049
@@ -865,7 +874,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7221687570706080272, guid: 4d83f3368b95c47cb922b20d052d0633, type: 3}
       propertyPath: m_Name
-      value: Pedestal - Ice
+      value: Pedestal - Thunder
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d83f3368b95c47cb922b20d052d0633, type: 3}
@@ -1351,6 +1360,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227434836}
   m_CullTransparentMesh: 1
+--- !u!1 &1249275156 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8711065133478058390, guid: 4d83f3368b95c47cb922b20d052d0633, type: 3}
+  m_PrefabInstance: {fileID: 5423168846344367494}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1249275161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249275156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f155d1a5045b4994ad98c27ca1f0af8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: You spot a magic scroll. It is so hot that you can't barely touch
+    it.
+  detailedDescription: 
+  pickedUpObject: 1
+  infosText: 
+  spell: {fileID: 11400000, guid: 1f4fb258807074f4aa954529f44905e1, type: 2}
 --- !u!1 &1294917262
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,7 +1585,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0.000061035156}
+  m_AnchoredPosition: {x: 0.000061035156, y: 0.000030517578}
   m_SizeDelta: {x: -0.0001, y: -5.3325}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1382062189
@@ -1798,6 +1830,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1624445894 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8711065133478058390, guid: 4d83f3368b95c47cb922b20d052d0633, type: 3}
+  m_PrefabInstance: {fileID: 249007767}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1624445899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624445894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f155d1a5045b4994ad98c27ca1f0af8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: You spot a magic scroll. The corny and old  paper feels so cold in
+    your hand.
+  detailedDescription: 
+  pickedUpObject: 1
+  infosText: 
+  spell: {fileID: 11400000, guid: 4f8bbd4666ab247d99f21ca771c4e479, type: 2}
 --- !u!1 &1694383323
 GameObject:
   m_ObjectHideFlags: 0
@@ -2398,6 +2453,47 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &2004096665 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5521834869337460517, guid: 4eb837708803248b9a558b99e875c6cd, type: 3}
+  m_PrefabInstance: {fileID: 7114190172824825061}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2004096666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004096665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 835556e7442b743be8c630050a3f7977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canAttack: 0
+--- !u!1 &2018162059 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8711065133478058390, guid: 4d83f3368b95c47cb922b20d052d0633, type: 3}
+  m_PrefabInstance: {fileID: 817636049}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2018162064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018162059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f155d1a5045b4994ad98c27ca1f0af8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: The scroll you're looking at seems to vibrate and emit discontinuous
+    tiny thunderbolt.
+  detailedDescription: 
+  pickedUpObject: 1
+  infosText: 
+  spell: {fileID: 11400000, guid: e217b76b53645406dbf6180072688754, type: 2}
 --- !u!1 &2144209408
 GameObject:
   m_ObjectHideFlags: 0
@@ -2946,6 +3042,14 @@ PrefabInstance:
     - target: {fileID: 7221687570706080272, guid: 4d83f3368b95c47cb922b20d052d0633, type: 3}
       propertyPath: m_Name
       value: Pedestal - Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 7356464914001326905, guid: 4d83f3368b95c47cb922b20d052d0633, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8076678533439266809, guid: 4d83f3368b95c47cb922b20d052d0633, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d83f3368b95c47cb922b20d052d0633, type: 3}

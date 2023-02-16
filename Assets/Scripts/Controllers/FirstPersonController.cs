@@ -151,10 +151,11 @@ public class FirstPersonController : MonoBehaviour
 		// a reference to the players current horizontal velocity
 		float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
+		// I put this acceleration thing away....******
 		float speedOffset = 0.1f;
 		float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
 
-		// accelerate or decelerate to target speed
+		// accelerate or decelerate to target speed 
 		if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
 		{
 			// creates curved result rather than a linear one giving a more organic speed change
@@ -168,6 +169,7 @@ public class FirstPersonController : MonoBehaviour
 		{
 			_speed = targetSpeed;
 		}
+		//*************** 
 
 		// normalise input direction
 		Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
@@ -181,7 +183,7 @@ public class FirstPersonController : MonoBehaviour
 		}
 
 		// move the player
-		_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+		_controller.Move(inputDirection.normalized * (targetSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 	}
 
 	private void JumpAndGravity()
