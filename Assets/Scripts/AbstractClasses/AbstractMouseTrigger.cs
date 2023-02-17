@@ -6,6 +6,7 @@ using UnityEngine;
 public abstract class AbstractMouseTrigger : MonoBehaviour
 {
     protected PlayerController player;
+    public bool isInteractable = true;
     [SerializeField] [TextArea(3,10)] protected string description;
     [SerializeField] [TextArea(3,10)] protected string detailedDescription;
     public abstract void OnLeftClick();
@@ -34,8 +35,11 @@ public abstract class AbstractMouseTrigger : MonoBehaviour
 
     public void HandleHover()
     {
-        Debug.Log("Hovering : " + gameObject.name);
-        OnHover();
+        if (isInteractable)
+        {
+            Debug.Log("Hovering : " + gameObject.name);
+            OnHover();
+        }
     }
 
     protected void LogDescription()

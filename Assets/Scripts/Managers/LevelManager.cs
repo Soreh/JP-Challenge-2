@@ -22,6 +22,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         EndPanel.SetActive(false);
+        HUDHandler.Instance.LogText("You wake up in a cold and strange room with one and only thought in mind : find a way out!");
     }
 
     private void Awake() {
@@ -90,8 +91,9 @@ public class LevelManager : MonoBehaviour
 
     public void openDoor()
     {
-        Animator doorAnim = door.gameObject.GetComponentInChildren<Animator>();
+        Animator doorAnim = door.GetComponentInChildren<Animator>();
         doorAnim.SetTrigger("Open_tr");
+        door.GetComponent<InfosPoint>().isInteractable = false;
     }
 
     public void Retry()

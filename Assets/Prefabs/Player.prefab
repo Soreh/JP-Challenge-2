@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7114190174304793369}
   - component: {fileID: 7114190174304793368}
   - component: {fileID: 7114190174304793371}
+  - component: {fileID: 2004096666}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -71,6 +72,7 @@ MonoBehaviour:
   look: {x: 0, y: 0}
   jump: 0
   sprint: 0
+  isPlaying: 1
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
@@ -89,7 +91,7 @@ MonoBehaviour:
   MoveSpeed: 4
   SprintSpeed: 6
   RotationSpeed: 1
-  SpeedChangeRate: 2.3
+  SpeedChangeRate: 20
   JumpHeight: 1.2
   Gravity: -15
   JumpTimeout: 0.1
@@ -133,6 +135,19 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &2004096666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5521834869337460517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 835556e7442b743be8c630050a3f7977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canAttack: 0
 --- !u!1 &7114190173315102522
 GameObject:
   m_ObjectHideFlags: 0

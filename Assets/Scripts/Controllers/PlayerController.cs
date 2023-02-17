@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
         if(Mouse.current.rightButton.wasPressedThisFrame && canAttack) 
         {
-            HUDHandler.Instance.LogText("It's not safe to cast a spell on a non valid target !");
+            Attack(1f, PlayerHands.Right);
         }
     }
 

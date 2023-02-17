@@ -13,7 +13,11 @@ public class AbstractAttack : ScriptableObject
     public virtual void InflictDamage(AbstractTarget target)
     {
         HUDHandler.Instance.LogText( attackDescription );
-        target.ReceiveDamage(damage, this);
+        if (target != null) {
+            target.ReceiveDamage(damage, this);
+        } else {
+            HUDHandler.Instance.LogText("But, what were you aiming at exactly?...");
+        }
     }
 
 }

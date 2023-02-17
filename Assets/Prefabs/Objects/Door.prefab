@@ -59,6 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45197a470435343f89981def53a5c52a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInteractable: 1
   description: You're facing a massive stone closed door...
   detailedDescription: 'As you touch the sealed door, a message appears on its cold
     surface.<br>It reads : <b>"Thunder stirs up Fire calming Cold"</b>.'
@@ -124,3 +125,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7166820264216203836, guid: eda56bfe64f8946c68eb6d1f6ba569f4, type: 3}
   m_PrefabInstance: {fileID: 7297617794233487999}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5066719918803839112 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2528421905831672567, guid: eda56bfe64f8946c68eb6d1f6ba569f4, type: 3}
+  m_PrefabInstance: {fileID: 7297617794233487999}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7982523566648016496
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5066719918803839112}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ea47aaf7a0a3849ea91068fa9e1bc649, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0

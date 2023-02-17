@@ -7,8 +7,10 @@ public class RiddlePillar : AbstractTarget
 {
     private int lastSpell = 0;
     public float radiusEffect = 5;
+    public float effectForce = 2f;
     public int dmgPoint = 10;
     public Spell[] spellOrder;
+    [SerializeField] ParticleSystem attackEffect;
 
     public override void ReceiveDamage(int damage, AbstractAttack attack)
     {
@@ -32,8 +34,11 @@ public class RiddlePillar : AbstractTarget
     {
         bool inflictDmg= false;
         string txt = "The pilar vibrates and emits a powerful choc wave! ";
+        attackEffect.Play();
         if (GetDistanceToPlayer() < radiusEffect)
         {
+
+            player.GetComponent<CharacterController>().Move((player.transform.position - transform.position).normalized * effectForce );
             txt += $"This strikes you in the face, causing { dmgPoint } DMG points!";
             inflictDmg = true;
         } else 
