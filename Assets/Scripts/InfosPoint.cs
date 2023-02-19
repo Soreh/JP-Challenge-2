@@ -5,19 +5,25 @@ using UnityEngine.InputSystem;
 
 public class InfosPoint : AbstractMouseTrigger
 {
+    [SerializeField] float minDistanceToExamine = 1.5f;
     public override void OnLeftClick()
     {
-        LogLongDescription();
+        LogDescription();
     }
 
     public override void OnRightClick()
     {
-        LogLongDescription();
+        if (GetDistanceToPlayer() <= minDistanceToExamine) {
+            LogLongDescription();
+        } else {
+            HUDHandler.Instance.LogText("You are too far away to examine this.");
+        }
     }
 
     public override void OnHover()
     {
         HUDHandler.Instance.SwitchCursor(HUDCursor.Look);
-        LogDescription();
+        HUDHandler.Instance.SetLeftIcone(0);
+        HUDHandler.Instance.SetRightIcone(0);
     }
 }

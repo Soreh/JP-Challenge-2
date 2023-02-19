@@ -15,6 +15,7 @@ public class FirstPersonController : MonoBehaviour
 	public float RotationSpeed = 1.0f;
 	[Tooltip("Acceleration and deceleration")]
 	public float SpeedChangeRate = 10.0f;
+	public bool CanMove = true;
 
 	[Space(10)]
 	[Tooltip("The height the player can jump")]
@@ -183,12 +184,15 @@ public class FirstPersonController : MonoBehaviour
 		}
 
 		// move the player
-		_controller.Move(inputDirection.normalized * (targetSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+		if (CanMove) 
+		{
+			_controller.Move(inputDirection.normalized * (targetSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+		}
 	}
 
 	private void JumpAndGravity()
 	{
-		if (Grounded)
+		if (Grounded && CanMove)
 		{
 			// reset the fall timeout timer
 			_fallTimeoutDelta = FallTimeout;

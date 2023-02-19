@@ -44,7 +44,9 @@ public abstract class AbstractMouseTrigger : MonoBehaviour
 
     protected void LogDescription()
     {
-        LogMessage(description);
+        if (description != "") {
+            LogMessage(description);
+        }
     }
 
     protected void LogLongDescription()

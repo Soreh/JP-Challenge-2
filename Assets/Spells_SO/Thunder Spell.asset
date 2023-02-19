@@ -15,9 +15,12 @@ MonoBehaviour:
   attackName: Spell of Thunder
   attackDescription: A bright blueish thunder bolt runs toward your target and hit
     it  as the scroll disapears from your hand.
+  EquipedPrefab: {fileID: 7278822197708519656, guid: 68c767add7cc8456196a2fd553728402, type: 3}
+  PuPrefab: {fileID: 0}
   damage: 10
   range: 6
-  icone: {fileID: 0}
+  icone: {fileID: 21300000, guid: 48d8fcd532dab48498e8e4804564de7d, type: 3}
   inventorySlot: 0
   defaultHand: 1
   destroyOnUse: 1
+  Effect: {fileID: 98139385973397997, guid: ced50fb4103934d2f89d9848235e0217, type: 3}

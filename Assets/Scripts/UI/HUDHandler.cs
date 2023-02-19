@@ -24,6 +24,11 @@ public class HUDHandler : MonoBehaviour
 
     [SerializeField]
     private Sprite[] _cursors;
+    [SerializeField] Image _leftIconePlaceholder;
+    [SerializeField] Image _rightIconePlaceholder;
+    [SerializeField] Sprite[] _leftIcones;
+    [SerializeField] Sprite[] _rightIcones;
+    private bool _showDefaultIcones = true;
     private HUDCursor _currentCursor;
     private float _messageTimer;
     public float defautlMessageTimer = 10f;
@@ -45,6 +50,7 @@ public class HUDHandler : MonoBehaviour
         {
             player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         }
+        SetDefaultIcones();
         SwitchCursor(HUDCursor.Default);
         _messageTimer = defautlMessageTimer;
     }
@@ -62,7 +68,10 @@ public class HUDHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        player.canAttack = true;
+        if ( _showDefaultIcones) {
+            SetDefaultIcones();
+        }
+        
         _messageTimer -= Time.deltaTime;
 
         if (_messageTimer < 0) {
@@ -90,6 +99,34 @@ public class HUDHandler : MonoBehaviour
             _currentCursor = cursor;
         }
             
+    }
+
+    public void SetDefaultIcones()
+    {
+        if (player._leftHand == null ) {
+            _leftIconePlaceholder.color = new Color(0,0,0,0);
+        } else {
+            _leftIconePlaceholder.sprite = player._leftHand.icone;
+            _leftIconePlaceholder.color = new Color(255,255,255,1);
+        }
+        if (player._righttHand == null) {
+            _rightIconePlaceholder.color = new Color(0,0,0,0);
+        } else {
+            _rightIconePlaceholder.sprite = player._righttHand.icone;
+            _rightIconePlaceholder.color = new Color(255,255,255,1);
+        }
+    }
+
+    public void SetLeftIcone(int index)
+    {
+        _leftIconePlaceholder.sprite = _leftIcones[index];
+        _leftIconePlaceholder.color = new Color(255,255,255,1);
+    }
+
+    public void SetRightIcone(int index)
+    {
+        _rightIconePlaceholder.sprite = _rightIcones[index];
+        _rightIconePlaceholder.color = new Color(255,255,255,1);
     }
 
     public void LogText(string txt)
@@ -122,6 +159,7 @@ public class HUDHandler : MonoBehaviour
             AbstractMouseTrigger ms = _hit.transform.gameObject.GetComponent<AbstractMouseTrigger>();
             if (hitGameObject.CompareTag("MouseTrigger")) {
                 player.canAttack = false;
+                _showDefaultIcones = false;
                 if (_lastHit == null || _lastHit != hitGameObject ) {
                     _lastHit = hitGameObject;
                     ms.HandleHover();
@@ -134,11 +172,15 @@ public class HUDHandler : MonoBehaviour
                 }
             } else {
                 _lastHit = hitGameObject;
+                player.canAttack = true;
                 SwitchCursor(HUDCursor.Default);
+                SetDefaultIcones();
             }
         } else {
             _lastHit = null;
+            player.canAttack = true;
             SwitchCursor(HUDCursor.Default);
+            SetDefaultIcones();
         }
     }
 

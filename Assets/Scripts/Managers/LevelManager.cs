@@ -11,18 +11,26 @@ using UnityEditor;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance {get; private set;}
+    public Scroll_PU[] Scrolls_PU;
     public GameObject door;
     public GameObject EndPanel;
+    public GameObject PausePanel;
     public TextMeshProUGUI gameOverTxt;
     public TextMeshProUGUI youWinTxt;
     public GameInputSystem gameInput;
     private List<Scroll_PU> m_scrolls_to_respawn;
     private bool isPaused;
+    [SerializeField] private PlayerController _playerCtrl;
     // Start is called before the first frame update
     void Start()
     {
         EndPanel.SetActive(false);
-        HUDHandler.Instance.LogText("You wake up in a cold and strange room with one and only thought in mind : find a way out!");
+        PausePanel.SetActive(false);
+        foreach (Scroll_PU scroll in Scrolls_PU)
+        {
+            scroll.gameObject.SetActive(false);
+            AddScrollToRespawn(scroll);
+        }
     }
 
     private void Awake() {
@@ -62,8 +70,10 @@ public class LevelManager : MonoBehaviour
 
     public void PauseGame()
     {
+        _playerCtrl.canAttack = false;
         gameInput.FreeCursor();
         HUDHandler.Instance.SetRayCasting(false);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>().CanMove = false;
         isPaused = true;
     }
 
@@ -73,9 +83,14 @@ public class LevelManager : MonoBehaviour
         {
             isPaused = false;
             HUDHandler.Instance.SetRayCasting(true);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>().CanMove = true;
+            _playerCtrl.canAttack = true;
             gameInput.LockCursor();
+            PausePanel.SetActive(false);
         } else {
             PauseGame();
+            HUDHandler.Instance.SetRayCasting(false);
+            PausePanel.SetActive(true);
         }
     }
 
@@ -107,18 +122,19 @@ public class LevelManager : MonoBehaviour
         {
             m_scrolls_to_respawn = new List<Scroll_PU>();
         }
-        Scroll_PU copiedScroll = Instantiate(scroll_pu, scroll_pu.gameObject.transform.position, Quaternion.identity);
-        copiedScroll.gameObject.SetActive(false);
-        m_scrolls_to_respawn.Add(copiedScroll);
+        m_scrolls_to_respawn.Add(scroll_pu);
     }
 
     public void RespawnScrolls()
     {  
-        foreach (Scroll_PU pu in m_scrolls_to_respawn)
+        if (m_scrolls_to_respawn != null) 
         {
-            pu.gameObject.SetActive(true);
-        } 
-        m_scrolls_to_respawn = null;
+            foreach (Scroll_PU pu in m_scrolls_to_respawn)
+            {
+                pu.gameObject.SetActive(true);
+            } 
+            m_scrolls_to_respawn = null;
+        }
 
     }
 }

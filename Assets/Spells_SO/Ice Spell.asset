@@ -15,9 +15,12 @@ MonoBehaviour:
   attackName: Ice Spell
   attackDescription: 'Frozen spikes flow from your hand ! The scroll then vanish
     into void... '
+  EquipedPrefab: {fileID: 7278822197708519656, guid: f17e20596f06248dbaa453efd47a6cb1, type: 3}
+  PuPrefab: {fileID: 0}
   damage: 10
   range: 4
-  icone: {fileID: 0}
+  icone: {fileID: 21300000, guid: ec67d76e1d25e4814800bd7dfcfeaf73, type: 3}
   inventorySlot: 0
   defaultHand: 1
   destroyOnUse: 1
+  Effect: {fileID: 98139385973397997, guid: ced50fb4103934d2f89d9848235e0217, type: 3}

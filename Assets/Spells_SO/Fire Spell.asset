@@ -15,9 +15,12 @@ MonoBehaviour:
   attackName: Fire Scroll
   attackDescription: You cast a wonderful fire spell ! The scroll then vanish from
     your hand...
+  EquipedPrefab: {fileID: 7278822197708519656, guid: 9c363258b991a44b6ad266e031d10e09, type: 3}
+  PuPrefab: {fileID: 4213067347069640251, guid: aa3b43aff4b4e4f50af95a9839c8a334, type: 3}
   damage: 10
   range: 3
-  icone: {fileID: 0}
+  icone: {fileID: 21300000, guid: 98c81540db278492ab1ce638fed503b3, type: 3}
   inventorySlot: 0
   defaultHand: 1
   destroyOnUse: 1
+  Effect: {fileID: 2329387002455017773, guid: b53cb3ac834cc4468bf7c318528b0433, type: 3}

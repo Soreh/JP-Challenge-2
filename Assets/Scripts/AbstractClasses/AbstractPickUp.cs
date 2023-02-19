@@ -23,7 +23,8 @@ public abstract class AbstractPickUp : AbstractMouseTrigger
     public override void OnHover()
     {
         HUDHandler.Instance.SwitchCursor(HUDCursor.PickUp);
-        LogDescription();
+        HUDHandler.Instance.SetLeftIcone(1);
+        HUDHandler.Instance.SetRightIcone(0);
     }
 
     public override void OnLeftClick()

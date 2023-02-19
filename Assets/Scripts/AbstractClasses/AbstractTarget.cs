@@ -20,6 +20,7 @@ public abstract class AbstractTarget : AbstractMouseTrigger
     public override void OnHover()
     {
         HUDHandler.Instance.SwitchCursor(HUDCursor.Fight);
+        HUDHandler.Instance.SetDefaultIcones();
     }
 
     

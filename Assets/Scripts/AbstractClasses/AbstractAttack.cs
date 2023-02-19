@@ -4,6 +4,8 @@ public class AbstractAttack : ScriptableObject
 {
     public string attackName;
     [TextArea(3,10)] public string attackDescription;
+    public GameObject EquipedPrefab;
+    public GameObject PuPrefab;
     public int damage;
     public float range;
     public Sprite icone;

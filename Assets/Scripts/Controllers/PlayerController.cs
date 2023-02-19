@@ -12,8 +12,14 @@ public class PlayerController : MonoBehaviour
     private int _hp;
     private int _maxHp = 15;
 
-    private AbstractAttack _leftHand;
-    private AbstractAttack _righttHand;
+    public AbstractAttack _leftHand;
+    public AbstractAttack _righttHand;
+    public GameObject LeftHandHolder;
+    public GameObject RightHandHolder;
+    private GameObject _inLeftHand;
+    private GameObject _inRightHand;
+
+    public GameObject SpawnPoint;
 
     // Encapusalation to make HealthPoint a property that can not be less than 0, or more than _maxHp
     public int HealthPoints { get {return _hp;} set { _hp = value < 0 ? 0 : value > _maxHp ? _maxHp : value;}}
@@ -27,17 +33,18 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if(Mouse.current.leftButton.wasPressedThisFrame && canAttack) 
-        {
-            // TODO
-            // Implement a "empty swing"
-            Attack(1f, PlayerHands.Left);
-        }
+        if (canAttack) {
+            if(Mouse.current.leftButton.wasPressedThisFrame) 
+            {
+                // TODO
+                // Implement a "empty swing"
+                Attack(1f, PlayerHands.Left);
+            }
 
-        if(Mouse.current.rightButton.wasPressedThisFrame && canAttack) 
-        {
-            Attack(1f, PlayerHands.Right);
+            if(Mouse.current.rightButton.wasPressedThisFrame) 
+            {
+                Attack(1f, PlayerHands.Right);
+            }
         }
     }
 
@@ -49,6 +56,13 @@ public class PlayerController : MonoBehaviour
         if ( weapon != null )
         {
             if (distance <= weapon.range) {
+                if (weapon.GetType() == typeof(Spell)) {
+                    Spell spell = (Spell)weapon;
+                    GameObject.Instantiate(spell.Effect, transform);
+                } else if (weapon.GetType() == typeof(Sword)) {
+                    Sword sword = (Sword)weapon;
+                    LeftHandHolder.GetComponent<Animator>().SetTrigger("Attack_tr");
+                }
                 weapon.InflictDamage(target);
                 if (weapon.destroyOnUse)
                 {
@@ -72,12 +86,29 @@ public class PlayerController : MonoBehaviour
     {
         if (hand == PlayerHands.Left)
         {
+            if (_leftHand != null)
+            {
+                if (!_leftHand.destroyOnUse) 
+                {
+                    Instantiate(_leftHand.PuPrefab, SpawnPoint.transform.position, Quaternion.identity);
+                }
+                Destroy(_inLeftHand);
+            }
             _leftHand = null;
         }
         if (hand == PlayerHands.Right)
         {
+            if (_righttHand != null)
+            {
+                if (!_righttHand.destroyOnUse)
+                {
+                    Instantiate(_righttHand.PuPrefab, SpawnPoint.transform.position, Quaternion.identity);
+                }
+                Destroy(_inRightHand);
+            }
             _righttHand = null;
         }
+        HUDHandler.Instance.SetDefaultIcones();
     }
 
     private AbstractAttack GetEquipedWeapon(PlayerHands hand)
@@ -92,13 +123,16 @@ public class PlayerController : MonoBehaviour
         {
             case PlayerHands.Left :
                 _leftHand = weapon;
+                _inLeftHand = Instantiate(weapon.EquipedPrefab, LeftHandHolder.transform);
                 break;
             case PlayerHands.Right :
+                _inRightHand = Instantiate(weapon.EquipedPrefab, RightHandHolder.transform);
                 _righttHand = weapon;
                 break;
             default:
                 break;
         }
+        HUDHandler.Instance.SetDefaultIcones();
     }
 
     public void TakeDamage(int damage)
